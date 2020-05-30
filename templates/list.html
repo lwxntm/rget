@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Actix web</title>
+</head>
+<body>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <h3 class="text-center">
+               离线下载
+            </h3>
+            <div class="row-fluid">
+                <div class="span12" style="text-align: center">
+                         <a class="btn btn-info" href=".">刷新</a>
+                    <form class="form-inline" >
+                        <fieldset>
+                            <label>下载地址</label>
+                            <label>
+                            <input type="text" name="link"/>
+                        </label> <span class="help-block">在上方输入地址.</span> <button type="submit" class="btn">提交</button>
+                        </fieldset>
+                    </form>
+                </div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        文件名
+                    </th>
+                    <th>
+                       最后修改时间
+                    </th>
+                    <th>
+                        文件大小
+                    </th>
+                    <th>
+                        删除
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for a in file_names %}
+                <tr >
+                    <td> <a href="dl/{{a.file_name}}">{{a.file_name}}</a> </td>
+                    <td>{{a.mod_time}}</td>
+                    <td>{{a.size}}</td>
+                    <td><a  class="btn btn-default" href="delete/{{a.file_name}}" role="button">删除文件</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
